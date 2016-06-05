@@ -15,8 +15,8 @@ int main(int argc, char * argv[])
     }
     else
     {
-		clock_t start, finish;
-		start = clock();
+        clock_t start, finish;
+        start = clock();
         unsigned int c = atoi(argv[2]);
         FILE * pFile;
         pFile = fopen(argv[1], "wb");
@@ -27,8 +27,8 @@ int main(int argc, char * argv[])
         }
         free(a);
         fclose(pFile);
-		finish = clock();
-		printf("Finished writing %uMB to %s in %.2fs\n", c, argv[2], (double)(finish-start)/CLOCKS_PER_SEC);
+        finish = clock();
+        printf("Finished writing %uMB to %s in %.2fs\n", c, argv[2], (double)(finish-start)/CLOCKS_PER_SEC);
         return 0;
     }
 }
