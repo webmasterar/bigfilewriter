@@ -19,9 +19,17 @@ int main(int argc, char * argv[])
         start = clock();
         unsigned int c = atoi(argv[2]);
         FILE * pFile;
-        pFile = fopen(argv[1], "wb");
-        char * a = (char *) calloc(ONE_MB, 1);
+        pFile = fopen(argv[1], "w");
+		if (!pFile) {
+			fprintf(stderr, "Error. Failed to open file for writing!\n");
+			return 1;
+		}
+        char * a = (char *) malloc(ONE_MB + 1);
         unsigned int i;
+		for (i = 0; i < ONE_MB; i++) {
+			a[i] = '1';
+		}
+		a[ONE_MB] = '\0';
         for (i = 0; i < c; i++) {
             fwrite(a, 1, ONE_MB, pFile);
         }
