@@ -18,11 +18,12 @@ try:
     f = open(fname, 'w')
     for i in xrange(fsize):
         f.write(oneMB)
+        print "\rWrote %dMB to %s " % (i + 1, fname),
     f.close()
 except Exception as e:
     print e
     sys.exit(1)
 
-finish = time.clock()	
+finish = time.clock()
 
-print "Finished writing %dMB to %s in %.2fs" % (fsize, fname, finish - start)
+print "\nFinished in %.2fs" % (finish - start)
