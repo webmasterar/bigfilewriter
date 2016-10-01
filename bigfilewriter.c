@@ -32,11 +32,12 @@ int main(int argc, char * argv[])
         a[ONE_MB] = '\0';
         for (i = 0; i < c; i++) {
             fwrite(a, 1, ONE_MB, pFile);
+            printf("\rWrote %uMB to %s ", i + 1, argv[1]);
         }
         free(a);
         fclose(pFile);
         finish = clock();
-        printf("Finished writing %uMB to %s in %.2fs\n", c, argv[2], (double)(finish-start)/CLOCKS_PER_SEC);
+        printf("\nFinished in %.2fs\n", (double)(finish-start)/CLOCKS_PER_SEC);
         return 0;
     }
 }
